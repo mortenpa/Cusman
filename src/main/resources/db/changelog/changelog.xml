@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.9.xsd">
+    <changeSet id="4" author="me">
+
+        <createTable tableName="cusman_user">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="cusman_user_id_pk" />
+            </column>
+            <column name="username" type="varchar(64)" >
+                <constraints nullable="false" />
+            </column>
+            <column name="password_hash" type="varchar(60)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <insert tableName="cusman_user">
+            <column name="id" value="1" />
+            <column name="username" value="test" />
+            <column name="password_hash" value="$2a$10$TueOVQfKOZsMUMb/r/hKueEVCjGYf2N571cGumY6mH5soTSWmsnlm" />
+        </insert>
+        <insert tableName="cusman_user">
+            <column name="id" value="2" />
+            <column name="username" value="srini" />
+            <column name="password_hash" value="$2a$10$TueOVQfKOZsMUMb/r/hKueEVCjGYf2N571cGumY6mH5soTSWmsnlm" />
+        </insert>
+        <insert tableName="cusman_user">
+            <column name="id" value="3" />
+            <column name="username" value="my_user" />
+            <column name="password_hash" value="$2a$10$TueOVQfKOZsMUMb/r/hKueEVCjGYf2N571cGumY6mH5soTSWmsnlm" />
+        </insert>
+
+        <createTable tableName="client">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="client_id_pk" />
+            </column>
+            <column name="first_name" type="varchar(100)"/>
+            <column name="last_name" type="varchar(100)"/>
+            <column name="username" type="varchar(100)"/>
+            <column name="email" type="varchar(256)"/>
+            <column name="address" type="varchar(256)"/>
+            <column name="country" type="varchar(100)"/>
+            <column name="client_manager_user" type="varchar(64)"/>
+        </createTable>
+        <insert tableName="client">
+            <column name="id" value="1"/>
+            <column name="first_name" value="Liqui"/>
+            <column name="last_name" value="Base"/>
+            <column name="username" value="liquibase"/>
+            <column name="email" value="test@test.com"/>
+            <column name="address" value="testing 9"/>
+            <column name="country" value="Finland"/>
+            <column name="client_manager_user" value="test"/>
+        </insert>
+
+        <createTable tableName="country">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" primaryKeyName="country_id_pk" />
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="alpha2code" type="varchar(2)"/>
+            <column name="alpha3code" type="varchar(3)"/>
+            <column name="numeric_code" type="varchar(3)"/>
+        </createTable>
+        <insert tableName="country">
+            <column name="id" value="1" />
+            <column name="name" value="Estonia" />
+            <column name="alpha2code" value="EE" />
+            <column name="alpha3code" value="EST" />
+            <column name="numeric_code" value="233" />
+        </insert>
+        <insert tableName="country">
+            <column name="id" value="2" />
+            <column name="name" value="Finland" />
+            <column name="alpha2code" value="FI" />
+            <column name="alpha3code" value="FIN" />
+            <column name="numeric_code" value="246" />
+        </insert>
+        <insert tableName="country">
+            <column name="id" value="3" />
+            <column name="name" value="Sweden" />
+            <column name="alpha2code" value="SE" />
+            <column name="alpha3code" value="SWE" />
+            <column name="numeric_code" value="752" />
+        </insert>
+        <insert tableName="country">
+            <column name="id" value="4" />
+            <column name="name" value="Latvia" />
+            <column name="alpha2code" value="LV" />
+            <column name="alpha3code" value="LVA" />
+            <column name="numeric_code" value="428" />
+        </insert>
+        <insert tableName="country">
+            <column name="id" value="5" />
+            <column name="name" value="Lithuania" />
+            <column name="alpha2code" value="LT" />
+            <column name="alpha3code" value="LTU" />
+            <column name="numeric_code" value="440" />
+        </insert>
+
+       <addAutoIncrement tableName="cusman_user" columnName="id" columnDataType="bigint" startWith="2" incrementBy="1" />
+       <addAutoIncrement tableName="client" columnName="id" columnDataType="bigint" startWith="2" incrementBy="1" />
+       <addAutoIncrement tableName="country" columnName="id" columnDataType="bigint" startWith="6" incrementBy="1" />
+       <createSequence sequenceName="hibernate_sequence" incrementBy="1" startValue="10" />
+    </changeSet>
+</databaseChangeLog>

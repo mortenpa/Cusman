@@ -1,0 +1,85 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title th:if="${existing_client}">Edit Client</title>
+    <title th:unless="${existing_client}">Add Client</title>
+
+    <!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+      <div class="py-5 text-center">
+        <h2 th:if="${existing_client}">Edit Client</h2>
+        <h2 th:unless="${existing_client}">Add Client</h2>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <form method="post">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">First name</label>
+                <input type="text" class="form-control" id="firstName" th:field="${clientFormDTO.firstName}" placeholder="" value="">
+                <p class="validationError" th:errors="${clientFormDTO.firstName}"></p>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Last name</label>
+                <input type="text" class="form-control" id="lastName" th:field="${clientFormDTO.lastName}" placeholder="" value="">
+                <p class="validationError" th:errors="${clientFormDTO.lastName}"></p>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="username">Username</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="username" th:field="${clientFormDTO.username}" placeholder="Username">
+                <p class="validationError" th:errors="${clientFormDTO.username}"></p>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" th:field="${clientFormDTO.email}" placeholder="you@example.com">
+              <p class="validationError" th:errors="${clientFormDTO.email}"></p>
+
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" th:field="${clientFormDTO.address}" placeholder="1234 Main St">
+              <p class="validationError" th:errors="${clientFormDTO.address}"></p>
+            </div>
+
+            <div class="mb-3">
+              <label for="country">Country</label>
+                <select class="custom-select d-block w-100" id="country" th:field="${clientFormDTO.country}" >
+                  <option th:each="country : ${countries}" th:text="${country.name}" th:value="${country.name}"/>
+                </select>
+                <p class="validationError" th:errors="${clientFormDTO.country}"></p>
+            </div>
+            <hr class="mb-4">
+			
+			<input class="btn btn-primary btn-lg btn-block" type="submit" th:value="${existing_client} ? 'Edit client' : 'Add client'" />
+          </form>
+
+          <p><a href="/">Nevermind, take me back home.</a></p>
+        </div>
+      </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 Company Name</p>
+      </footer>
+    </div>
+  </body>
+</html>
