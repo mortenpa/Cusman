@@ -111,6 +111,11 @@ public class ClientController {
         Client newClient = new Client(clientFormDTO.getFirstName(),
                                       clientFormDTO.getLastName(),
                                       user.getUsername());
+        newClient.setUsername(clientFormDTO.getUsername());
+        newClient.setEmail(clientFormDTO.getEmail());
+        newClient.setAddress(clientFormDTO.getAddress());
+        newClient.setCountry(clientFormDTO.getCountry());
+
         clientRepository.save(newClient);
 
         return "redirect:/";

@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
-@Entity // This tells Hibernate to make a table out of this class
+@Entity
 @Table(name = "CUSMAN_USER")
 public class User {
     @Id
@@ -21,7 +21,6 @@ public class User {
     public User(String username, String password){
         this.username = username;
         this.passwordHash = encoder.encode(password);
-        System.out.println(passwordHash);
     }
 
     public boolean passwordIsCorrect(String password){

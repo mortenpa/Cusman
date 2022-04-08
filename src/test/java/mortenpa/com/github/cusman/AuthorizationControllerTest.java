@@ -27,6 +27,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @WebAppConfiguration
 public class AuthorizationControllerTest {
 
+    //TODO ALL THE TESTS
+    /*
     protected MockMvc mvc;
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -44,7 +46,7 @@ public class AuthorizationControllerTest {
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(json, clazz);
     }
-/*
+
     @Test
     public void registration() throws Exception{
         String uri = "/register";
